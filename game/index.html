@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dapur Bara — Wok Rush</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <!-- ============ HUD ============ -->
+  <header id="hud">
+    <div class="brand">🔥 DAPUR BARA <span class="brand-sub">Wok Rush</span></div>
+    <div class="hud-mid">
+      <div class="hud-stat" id="hud-shift">SHIFT 1 <span class="hud-label">/ Hari 1</span></div>
+      <div class="hud-timer" id="hud-timer">⏱ 02:30</div>
+      <div class="hud-stat" id="hud-quota">🎯 0/8 <span class="hud-label">pesanan</span></div>
+    </div>
+    <div class="hud-right">
+      <div class="hud-stat coins">🪙 <span id="hud-coins">0</span></div>
+      <div class="hud-stat combo" id="hud-combo">🔥 COMBO ×1</div>
+      <div class="hud-stat hearts" id="hud-hearts">❤️❤️❤️</div>
+      <button class="hud-btn" id="btn-sound" title="Suara (M)">🔊</button>
+      <button class="hud-btn" id="btn-pause" title="Jeda (P)">⏸</button>
+      <button class="hud-btn" id="btn-restart" title="Ulangi (R)">↻</button>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ROW ============ -->
+  <main id="main">
+    <!-- ORDER BOARD -->
+    <aside id="orders-panel">
+      <h2>📋 PAPAN PESANAN</h2>
+      <div id="orders"></div>
+      <div id="orders-empty">Menunggu pelanggan…</div>
+      <div id="level-card">
+        <div class="level-title">⭐ LEVEL DAPUR <span id="level-num">1</span></div>
+        <div class="level-bar"><div id="level-fill"></div></div>
+        <div class="level-sub" id="level-sub">Sajikan 4 hidangan lagi untuk naik level</div>
+      </div>
+    </aside>
+
+    <!-- KITCHEN : STATIONS -->
+    <section id="kitchen">
+      <h2>🍳 DAPUR — KLIK BAHAN LALU KLIK STASIUN</h2>
+      <div id="stations"></div>
+      <div id="kitchen-tip">💡 Masakan matang jangan dibiarkan — gosong dalam <b>6 detik</b>! Klik stasiun yang sudah ✅ untuk mengambilnya.</div>
+    </section>
+
+    <!-- PLATE / SERVE -->
+    <aside id="serve-panel">
+      <h2>🍽️ PIRING RACIKAN</h2>
+      <div id="plate-wrap">
+        <div id="plate">
+          <div id="plate-items"></div>
+          <div id="plate-empty">Piring kosong — klik pesanan untuk memilih target, lalu isi dari stasiun.</div>
+        </div>
+        <div id="target-line">🎯 Target: <span id="target-name">— pilih pesanan —</span></div>
+      </div>
+      <button id="btn-serve">🍽️ SAJIKAN <span id="serve-hint"></span></button>
+      <button id="btn-trash">🗑️ Buang isi piring</button>
+      <div id="hand-box">✋ TANGAN: <span id="hand-content">kosong</span></div>
+      <div id="score-box">
+        <div>💰 Hari ini: <b id="score-today">0</b> koin</div>
+        <div>🏆 Rekor: <b id="score-best">0</b> koin</div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ============ INGREDIENT COUNTER ============ -->
+  <footer id="counter">
+    <div id="bins"></div>
+    <button id="btn-restock">🛒 BELI STOK<br><span>5 koin · +4 semua</span></button>
+  </footer>
+
+  <!-- ============ OVERLAYS ============ -->
+  <div class="overlay" id="start-overlay">
+    <div class="card">
+      <div class="card-fire">🔥🍳🔥</div>
+      <h1>DAPUR BARA</h1>
+      <div class="card-tag">Wok Rush — game masak kilat warung kaki lima</div>
+      <p class="card-how">
+        <b>Cara main:</b> klik pesanan di papan → klik bahan di konter bawah →
+        klik stasiun yang cocok (talenan / wok / grill / panci) → ambil saat
+        matang ✅ → susun di piring → <b>SAJIKAN</b> sebelum pelanggan kabur!
+      </p>
+      <ul class="card-rules">
+        <li>⏱ Sajikan cepat = tip besar. Pesanan kadaluarsa = combo hangus, ❤️ berkurang.</li>
+        <li>🔥 Masakan matang gosong dalam 6 detik — awasi bar stasiun!</li>
+        <li>🛒 Stok bahan habis? Beli stok 5 koin. Combo ×5 = tip 2× lipat.</li>
+        <li>⌨️ Keyboard: <b>1–8</b> bahan · <b>Z X C V</b> stasiun · <b>Spasi</b> sajikan · <b>P</b> jeda · <b>M</b> suara</li>
+      </ul>
+      <button class="big-btn" id="btn-start">▶ MULAI SHIFT</button>
+      <div class="card-foot">Shift 150 detik · Target 8 pesanan · 6 resep warung asli</div>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="pause-overlay">
+    <div class="card small">
+      <h1>⏸ JEDA</h1>
+      <p>Istirahat sebentar, wajan tetap panas.</p>
+      <button class="big-btn" id="btn-resume">▶ LANJUTKAN</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="end-overlay">
+    <div class="card">
+      <h1 id="end-title">🎉 SHIFT SELESAI!</h1>
+      <div id="end-stars">⭐⭐⭐</div>
+      <div id="end-stats"></div>
+      <button class="big-btn" id="btn-again">▶ SHIFT BERIKUTNYA</button>
+      <button class="ghost-btn" id="btn-retry">↻ Ulangi shift ini</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="float-layer"></div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
