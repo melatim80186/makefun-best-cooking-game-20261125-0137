@@ -1,8 +1,8 @@
 # 🔥 Dapur Bara — Wok Rush
 
-[![competition](https://make.fun/api/competitions/best-cooking-game-20261125-0137/competition.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137)
-[![rank](https://make.fun/api/competitions/best-cooking-game-20261125-0137/rank.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137)
-[![reward](https://make.fun/api/competitions/best-cooking-game-20261125-0137/reward.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137)
+[![make.fun · best-cooking-game-20261125-0137](https://make.fun/badge/best-cooking-game-20261125-0137.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137?utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137)
+[![rank](https://make.fun/badge/best-cooking-game-20261125-0137/melatim80186/makefun-best-cooking-game-20261125-0137/rank.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137)
+[![reward](https://make.fun/badge/best-cooking-game-20261125-0137/melatim80186/makefun-best-cooking-game-20261125-0137/reward.svg)](https://make.fun/bounty/best-cooking-game-20261125-0137?utm_source=github&utm_medium=readme&utm_campaign=best-cooking-game-20261125-0137)
 
 **[▶ Play the entry — make.fun bounty page](https://make.fun/bounty/best-cooking-game-20261125-0137)**
 
@@ -45,7 +45,7 @@ Open `game/index.html` in desktop Chrome (or serve `game/` with any static serve
 - `main.ts` — entry program (Node 22): copies `game/` + `screenshots/` to `/output` and writes `dossier.json` via `vendor/makefun-game.ts`.
 - `game/` — the playable game: `index.html`, `style.css`, `game.js` (pure CSS art + emoji glyphs + WebAudio, zero network).
 - `screenshots/` — 4 real renders of the game's own code in desktop Chrome.
-- `vendor/makefun-game.ts` — kit copy (added after kit go-ahead; see `vendor/NOT-KIT-YET.txt`).
+- `vendor/makefun-game.ts` — the kit's copy, unchanged.
 
 ## License
 
